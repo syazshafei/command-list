@@ -1,12 +1,12 @@
 export default {
-  github: 'https://github.com/shuding/nextra',
-  docsRepositoryBase: 'https://github.com/shuding/nextra/blob/master',
-  titleSuffix: ' – Nextra',
+  github: 'https://github.com/syazwan0913/command-list',
+  docsRepositoryBase: 'https://github.com/syazwan0913/command-list',
+  titleSuffix: ' – syazwan0913',
   logo: (
     <>
-      <span className="mr-2 font-extrabold hidden md:inline">Nextra</span>
+      <span className="mr-2 font-extrabold hidden md:inline">Command List</span>
       <span className="text-gray-600 font-normal hidden md:inline">
-        The Next.js Static Site Generator
+        Collection of commands used
       </span>
     </>
   ),
@@ -60,8 +60,8 @@ export default {
   search: true,
   prevLinks: true,
   nextLinks: true,
-  footer: true,
-  footerEditLink: 'Edit this page on GitHub',
+  footer: false,
+  footerEditLink: '',
   footerText: <>MIT {new Date().getFullYear()} © Nextra.</>,
   unstable_faviconGlyph: '👋',
 }
