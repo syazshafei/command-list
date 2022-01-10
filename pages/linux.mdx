@@ -1,0 +1,132 @@
+# Linux
+
+Create user `admin` and add to sudoers
+
+```bash
+sudo adduser admin
+sudo usermod -aG sudo admin
+```
+
+Kill port/service on Linux machine
+
+```bash
+sudo netstat -nltp|grep LISTEN
+sudo netstat -nltp|grep :8080
+sudo kill -TERM xxxxx
+```
+
+Other netstat command
+
+```bash
+sudo netstat -nputw
+sudo netstat -tulpn
+```
+
+Example to kill java process
+
+```bash
+killall -9 java
+```
+
+List down systemctl services
+
+```bash
+systemctl --type=service
+```
+
+Follow systemctl logs
+
+```bash
+journalctl -f -u service_name
+```
+
+Copy file from a remote host to local host SCP example
+
+```bash
+scp username@from_host:file.txt /local/directory/
+```
+
+Copy file from local host to a remote host SCP example
+
+```bash
+scp file.txt username@to_host:/remote/directory/
+```
+
+Check local disk space
+
+```bash
+df -h
+```
+
+Check directory on which partition
+
+```bash
+df -h .
+```
+
+List all files with human readable file size and sorted by latest timestamp
+
+```bash
+ls -laht
+```
+
+Get size of all the directories
+
+```bash
+du -h --max-depth=1
+```
+
+Display biggest directories in the current working directory
+
+```bash
+du -hs * | sort -rh | head -5
+```
+
+Display the largest folders/files including the sub-directories
+
+```bash
+du -Sh | sort -rh | head -5
+```
+
+Find file recusively
+
+```bash
+find -L . -name "historical*"
+```
+
+Find file with `.tar.gz` extension in current directory and delete it
+
+```bash
+find . -name "*.tar.gz" -type f -delete
+```
+
+Find file with `.tar.gz` extension in current directory that older than 30 days and delete it
+
+```bash
+find . -name "*.tar.gz" -type f -mtime +30 -delete
+```
+
+Rename file extension for multiple files. Example: `.tar.gz` to `.tgz`
+
+```bash
+rename .tar.gz .tgz *.tar.gz
+```
+
+Vim configuration
+
+```bash
+vim ~/.vimrc
+:set cursorline
+:set hlsearch
+:set incsearch
+:set ignorecase
+:set autoindent
+:syntax on
+```
+
+Uninstall package
+
+```bash
+sudo apt list --installed
+sudo apt purge package_name
+```
