@@ -1,0 +1,154 @@
+# Others
+
+## PostgreSQL
+
+Install postgresql
+
+```bash
+sudo apt-get install postgresql postgresql-contrib
+```
+
+Setting up password for `postgres` user
+
+```bash
+sudo -u postgres psql
+ALTER USER postgres WITH ENCRYPTED PASSWORD 'xxxxxxx';
+```
+
+Connect to postgres user on postgreSQL
+
+```bash
+psql -h localhost -U postgres
+```
+
+Backup single db with YYYY-MM-DD format
+
+```bash
+pg_dump -U USERNAME DB_NAME > $(date +%Y-%m-%d).sql
+```
+
+Backup all db with YYYY-MM-DD format
+
+```bash
+pg_dumpall -U USERNAME > $(date +%Y-%m-%d).sql
+```
+
+Restore db
+
+```bash
+psql -U USERNAME DB_NAME < DB.sql
+```
+
+## Anaconda Environment
+
+Create environemnt (full package)
+
+```bash
+conda create -n yourenvname python=x.x anaconda
+```
+
+Create environemnt (normal package)
+
+```bash
+conda create -n yourenvname python=x.x
+```
+
+Delete environment
+
+```bash
+conda remove --name yourenvname --all
+```
+
+## SFTP Server
+
+### Installation
+
+```bash
+sudo groupadd shared
+sudo nano /etc/ssh/sshd_config
+ Match User shared
+ ForceCommand internal-sftp
+ PasswordAuthentication yes
+ PermitTunnel no
+ AllowAgentForwarding no
+ AllowTcpForwarding no
+ X11Forwarding no
+sudo service ssh restart
+sudo useradd -m shared -g shared -s /usr/sbin/nologin
+sudo passwd shared
+sudo mkdir /home/shared/uploads
+sudo chown shared:shared /home/shared/uploads
+```
+
+### Uninstallation
+
+Remove existing configuration in `/etc/ssh/sshd_config`
+
+Remove `shared` user
+
+```bash
+sudo groupdel shared
+sudo deluser --remove-home shared
+```
+
+## OpenJDK 8
+
+### Installation
+
+```bash
+sudo apt update
+sudo apt install openjdk-8-jdk
+sudo update-alternatives --config java
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd6
+```
+
+### Uninstallation
+
+```bash
+sudo apt purge openjdk-8*
+```
+
+## Nginx
+
+### Installation
+
+```bash
+sudo wget <https://nginx.org/keys/nginx_signing.key>
+sudo apt-key add nginx_signing.key
+sudo nano /etc/apt/sources.list.d/nginx.list
+deb [arch=amd64] <http://nginx.org/packages/mainline/ubuntu/> bionic nginx
+deb-src <http://nginx.org/packages/mainline/ubuntu/> bionic nginx
+sudo apt remove nginx nginx-common nginx-full nginx-core
+sudo apt update
+sudo apt install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
+sudo systemctl status nginx
+sudo systemctl stop nginx
+```
+
+### Uninstallation
+
+```bash
+sudo apt purge nginx*
+```
+
+## Keepalived
+
+### Installation
+
+```bash
+sudo apt install keepalived
+sudo vim /etc/keepalived/keepalived.conf
+sudo systemctl start keepalived
+sudo systemctl restart keepalived
+sudo systemctl status keepalived
+sudo systemctl stop keepalived
+```
+
+### Uninstallation
+
+```bash
+sudo apt purge keepalived*
+```
