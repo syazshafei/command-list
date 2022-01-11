@@ -113,7 +113,7 @@ sudo apt purge openjdk-8*
 ### Installation
 
 ```bash
-sudo wget <https://nginx.org/keys/nginx_signing.key>
+sudo wget https://nginx.org/keys/nginx_signing.key
 sudo apt-key add nginx_signing.key
 sudo echo "deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | sudo tee -a /etc/apt/sources.list.d/nginx.list
