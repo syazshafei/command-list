@@ -1,0 +1,59 @@
+# PostgreSQL
+
+Install postgresql
+
+```bash
+sudo apt-get install postgresql postgresql-contrib
+```
+
+Setting up password for `postgres` user
+
+```bash
+sudo -u postgres psql
+ALTER USER postgres WITH ENCRYPTED PASSWORD 'xxxxxxx';
+```
+
+Connect to postgres user on postgreSQL
+
+```bash
+psql -h localhost -U postgres
+```
+
+Backup single db with YYYY-MM-DD format
+
+```bash
+pg_dump -U USERNAME DB_NAME > $(date +%Y-%m-%d).sql
+```
+
+Backup all db with YYYY-MM-DD format
+
+```bash
+pg_dumpall -U USERNAME > $(date +%Y-%m-%d).sql
+```
+
+Restore db
+
+```bash
+psql -U USERNAME DB_NAME < DB.sql
+```
+
+Simple bash script to backup all databases from PostgreSQL docker container using cronjob
+
+```bash
+#!/bin/bash
+
+# Directory to save the backup
+path='/var/lib/postgresql/data/backups/'
+
+# Backup all databases with current date in .sql format
+pg_dumpall -U admin > $path$(date +%Y-%m-%d).sql
+
+# Compress the .sql file into .tgz
+cd $path && tar -czvf $(date +%Y-%m-%d).tgz *.sql
+
+# Delete the .sql file
+find $path -name "*.sql" -type f -delete
+
+# Find backup file older than 30 days and delete it
+find $path -name "*.tgz" -type f -mtime +30 -delete
+```
