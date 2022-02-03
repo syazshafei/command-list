@@ -31,10 +31,45 @@ Backup all db with YYYY-MM-DD format
 pg_dumpall -U USERNAME > $(date +%Y-%m-%d).sql
 ```
 
+Backup large db
+
+```bash
+pg_dump -U USERNAME DB_NAME | gzip > db.gz
+```
+
+Restore .gz backup
+
+```bash
+gunzip -c filename.gz | psql dbname
+```
+
 Restore db
 
 ```bash
 psql -U USERNAME DB_NAME < DB.sql
+```
+
+Backup using parallel jobs (if db extremely large)
+
+```bash
+pg_dump -U USERNAME -d DATABASE_NAME -F d -j 5 -f db_file
+```
+
+Restore from pg_dumpall 
+
+```bash
+pgsql -f $(date +%Y-%m-%d).sql postgres
+```
+
+Backup db using custom format
+```bash
+pg_dump -U postgres -Fc myDB > myDB.dump
+```
+
+Restore custom format db using parallel jobs
+
+```bash
+pg_restore -j 8 -U postgres -d myDB myDB.dump
 ```
 
 Simple bash script to backup all databases from PostgreSQL docker container using cronjob
