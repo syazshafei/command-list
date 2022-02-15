@@ -106,6 +106,18 @@ Find file with `.tar.gz` extension in current directory that older than 30 days 
 find . -name "*.tar.gz" -type f -mtime +30 -delete
 ```
 
+Find files older than 7 days and list them
+
+```bash
+find /sourcedirectory -maxdepth 1 -mtime +7 -type f -exec ls -l {} \;
+```
+
+Find files older than 7 days and move them
+
+```bash
+find /sourcedirectory -maxdepth 1 -mtime +7 -type f -exec mv "{}" /destination/directory/ \;
+```
+
 Rename file extension for multiple files. Example: `.tar.gz` to `.tgz`
 
 ```bash
