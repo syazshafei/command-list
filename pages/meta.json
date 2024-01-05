@@ -1,7 +1,8 @@
 {
   "index": "Introduction",
-  "Linux": "Linux",
-  "Docker": "Docker",
-  "Postgresql": "Postgresql",
-  "Others": "Others"
+  "linux": "Linux",
+  "docker": "Docker",
+  "postgresql": "Postgresql",
+  "macos": "Setup macOS",
+  "others": "Others"
 }

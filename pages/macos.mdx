@@ -1,0 +1,141 @@
+# brew
+
+```bash
+export HOMEBREW_NO_INSTALL_FROM_API=1
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+# nvm
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+nvm install 14.19.2
+nvm use 14.19.2
+nvm alias default 14.19.2
+```
+
+# yarn
+
+```bash
+npm i -g yarn
+```
+
+# react-native debugger
+
+```bash
+brew install --cask react-native-debugger
+```
+
+# watchman
+
+```bash
+brew install watchman
+```
+
+# cocoapods
+
+```bash
+sudo gem install cocoapods
+```
+
+Mac M1 architecture is not directly compatible with Cocoapods.
+If you encounter issues when installing pods, you can solve it by running:
+
+- `sudo arch -x86_64 gem install ffi`
+- `arch -x86_64 pod install`
+
+These commands install the `ffi` package, to load dynamically-linked libraries and let you run the `pod install` properly, and runs `pod install` with the proper architecture.
+
+# ruby
+
+```bash
+brew install ruby
+brew install ruby-build
+brew install rbenv
+rbenv install 2.7.5
+rbenv global 2.7.5
+```
+
+Add this into .zshrc file
+
+```bash
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+```
+
+# jdk
+
+```bash
+brew tap homebrew/cask-versions
+brew install --cask zulu11
+```
+
+# python
+
+```bash
+brew install pyenv
+pyenv install --list
+pyenv install <version>
+pyenv global <version>
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+# iTerm2
+
+```bash
+brew install --cask iterm2
+```
+
+# ohmyzsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+# firacode font
+
+```bash
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
+```
+
+# vscode user settings
+
+```json
+{
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.startupEditor": "none",
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "eslint.enable": true,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true
+}
+```
