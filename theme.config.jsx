@@ -1,13 +1,8 @@
 export default {
-  github: 'https://github.com/syazwan0913/command-list',
-  docsRepositoryBase: 'https://github.com/syazwan0913/command-list',
-  titleSuffix: ' – syazwan0913',
+  docsRepositoryBase: 'https://github.com/syazshafei/command-list',
   logo: (
     <>
       <span className="mr-2 font-extrabold hidden md:inline">Command List</span>
-      <span className="text-gray-600 font-normal hidden md:inline">
-        Collection of commands used
-      </span>
     </>
   ),
   head: (
@@ -57,11 +52,4 @@ export default {
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     </>
   ),
-  search: true,
-  prevLinks: true,
-  nextLinks: true,
-  footer: false,
-  footerEditLink: '',
-  footerText: <>MIT {new Date().getFullYear()} © Nextra.</>,
-  unstable_faviconGlyph: '👋',
 }
