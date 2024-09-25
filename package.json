@@ -11,6 +11,7 @@
   "author": "Shu Ding",
   "license": "MIT",
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.12",
     "next": "^14.2.13",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
